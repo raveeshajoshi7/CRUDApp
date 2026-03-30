@@ -1,0 +1,56 @@
+name: Deploy CRUD App
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: arn:aws:iam::<ACCOUNT_ID>:role/<ROLE_NAME>
+        aws-region: ap-south-1
+
+    - name: Deploy createTask
+      run: |
+        cd lambda
+        zip createTask.zip createTask.py
+        aws lambda update-function-code \
+          --function-name createTask \
+          --zip-file fileb://createTask.zip
+
+    - name: Deploy getTasks
+      run: |
+        cd lambda
+        zip getTasks.zip getTasks.py
+        aws lambda update-function-code \
+          --function-name getTasks \
+          --zip-file fileb://getTasks.zip
+
+    - name: Deploy updateTask
+      run: |
+        cd lambda
+        zip updateTask.zip updateTask.py
+        aws lambda update-function-code \
+          --function-name updateTask \
+          --zip-file fileb://updateTask.zip
+
+    - name: Deploy deleteTask
+      run: |
+        cd lambda
+        zip deleteTask.zip deleteTask.py
+        aws lambda update-function-code \
+          --function-name deleteTask \
+          --zip-file fileb://deleteTask.zip
