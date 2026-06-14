@@ -1,87 +1,109 @@
-🚀 Serverless CRUD API using AWS
+# AWS Serverless Task API
 
-📌 Overview
+## Overview
 
-This project is a serverless CRUD (Create, Read, Update, Delete) API built using AWS services. It demonstrates how to build and deploy RESTful APIs using AWS Lambda, API Gateway, and DynamoDB.
+This project is a serverless REST API built using AWS services to understand cloud-native application development. The project uses Amazon API Gateway, AWS Lambda, and DynamoDB to perform task management operations.
 
-🛠️ Tech Stack
-AWS Lambda (Backend logic)
-Amazon API Gateway (API routing)
-Amazon DynamoDB (Database)
-Python (Lambda runtime)
-Postman (API testing)
+The primary objective was to gain hands-on experience with serverless architecture, API integration, IAM permissions, and DynamoDB operations.
 
-📂 Features
-Create a task (POST)
-Retrieve all tasks (GET)
-Retrieve a single task by ID (GET)
-Update a task (PUT)
-Delete a task (DELETE)
+---
 
-🏗️ Architecture
-API Gateway handles incoming HTTP requests
-Requests are routed to AWS Lambda
-Lambda performs CRUD operations
-DynamoDB stores the data
-Responses are returned via API Gateway
-🔗 API Endpoints
-Method	Endpoint	Description
-POST	/tasks	Create a new task
-GET	/tasks	Get all tasks
-GET	/tasks/{id}	Get a task by ID
-PUT	/tasks/{id}	Update a task
-DELETE	/tasks/{id}	Delete a task
+## Technologies Used
 
-📥 Sample Request (POST)
-POST /tasks
-Content-Type: application/json
+* AWS Lambda
+* Amazon API Gateway
+* Amazon DynamoDB
+* AWS IAM
+* Amazon CloudWatch
+* Python
+* Postman
 
+---
+
+## Architecture
+
+1. API Gateway receives HTTP requests.
+2. Requests are routed to AWS Lambda functions.
+3. Lambda functions interact with DynamoDB.
+4. DynamoDB stores task information.
+5. Responses are returned through API Gateway.
+
+---
+
+## Features
+
+### Implemented
+
+* Create new tasks using POST requests
+* Update existing tasks using PUT requests
+* DynamoDB data storage
+* API Gateway and Lambda integration
+* CloudWatch logging and monitoring
+
+### Learning & Troubleshooting
+
+* GET and DELETE operations were partially implemented during development.
+* The project provided hands-on experience troubleshooting API Gateway routing, Lambda execution, IAM permissions, and DynamoDB integration.
+
+---
+
+## API Endpoints
+
+| Method | Endpoint    | Status                  |
+| ------ | ----------- | ----------------------- |
+| POST   | /tasks      | Working                 |
+| PUT    | /tasks/{id} | Working                 |
+| GET    | /tasks      | Learning Implementation |
+| GET    | /tasks/{id} | Learning Implementation |
+| DELETE | /tasks/{id} | Learning Implementation |
+
+---
+
+## Sample Request
+
+### Create Task
+
+```json
 {
   "name": "My Task"
 }
-🔄 Sample Update Request (PUT)
-PUT /tasks/{id}
-Content-Type: application/json
+```
 
+### Update Task
+
+```json
 {
   "name": "Updated Task"
 }
-⚙️ Setup Instructions
-1. Create DynamoDB Table
-Table name: Tasks
-Primary key: id (String)
+```
 
-2. Create Lambda Function
-Runtime: Python
-Add necessary IAM permissions for DynamoDB access
+---
 
-3. Configure API Gateway
-Create routes:
-/tasks
-/tasks/{id}
-Integrate with Lambda
-Enable Lambda proxy integration
+## What I Learned
 
-4. Deploy API
-Deploy to a stage (e.g., dev)
-Copy the invoke URL
-🧪 Testing
+* Building serverless applications on AWS
+* Creating and configuring Lambda functions
+* Working with DynamoDB tables
+* Configuring API Gateway routes
+* Managing IAM permissions
+* Troubleshooting cloud service integrations
+* Monitoring applications using CloudWatch
 
-Use Postman or curl to test endpoints:
+---
 
-curl -X GET https://<api-id>.execute-api.<region>.amazonaws.com/dev/tasks
+## Future Improvements
 
-🚧 Known Issues / Limitations
-PUT endpoint required additional API Gateway path parameter configuration during development
-Basic error handling can be improved
-No authentication implemented
+* Complete GET and DELETE functionality
+* Add input validation
+* Implement authentication using Amazon Cognito
+* Improve error handling
+* Create CI/CD pipeline using Jenkins and GitHub Actions
+* Add CloudWatch dashboards and alerts
 
-📌 Future Improvements
-Add authentication (Cognito / JWT)
-Add input validation
-Improve error handling and logging
-Add CI/CD pipeline
-Enhance monitoring with CloudWatch dashboards
+---
 
-👨‍💻 Author
-Built as a learning project to understand AWS serverless architecture and REST API development.
+## Author
+
+Raveesha Joshi
+
+This project was developed as part of my AWS cloud learning journey to gain practical experience with serverless architecture, cloud infrastructure, and troubleshooting AWS services.
