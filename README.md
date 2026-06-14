@@ -1,4 +1,5 @@
 🚀 Serverless CRUD API using AWS
+
 📌 Overview
 
 This project is a serverless CRUD (Create, Read, Update, Delete) API built using AWS services. It demonstrates how to build and deploy RESTful APIs using AWS Lambda, API Gateway, and DynamoDB.
@@ -49,15 +50,18 @@ Content-Type: application/json
 1. Create DynamoDB Table
 Table name: Tasks
 Primary key: id (String)
+
 2. Create Lambda Function
 Runtime: Python
 Add necessary IAM permissions for DynamoDB access
+
 3. Configure API Gateway
 Create routes:
 /tasks
 /tasks/{id}
 Integrate with Lambda
 Enable Lambda proxy integration
+
 4. Deploy API
 Deploy to a stage (e.g., dev)
 Copy the invoke URL
